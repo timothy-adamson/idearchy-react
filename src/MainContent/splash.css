@@ -1,0 +1,7 @@
+.splash{
+    background-image: url('../content/adelinpreda.jpg');
+    color: whitesmoke;
+    background-size: cover;
+    padding: 10vh 0px;
+    text-align: center;
+}

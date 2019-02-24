@@ -1,0 +1,24 @@
+nav{
+    display: flex;
+    background-color: #644c9c;
+    color: whitesmoke;
+    width: 100%;
+    position: fixed;
+    box-shadow: 0px 3px 10px #2e486d;
+}
+
+.navTitle{
+    font-size: 24px;
+    padding: 0.2rem;
+    margin-right: 5em;
+    margin-left: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.navOption{
+    flex-grow: 1;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
