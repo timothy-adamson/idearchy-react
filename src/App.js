@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
 import Navbar from './shared/navbar';
-import MainContent from './MainContent/MainContent'
+import Home from './MainContent/Home';
+import Trees from './MainContent/Trees';
+import Archive from './MainContent/Archive';
+import About from './MainContent/About';
 import Footer from './shared/footer';
 import customJson from './content/MOCK_DATA'
 
@@ -14,18 +18,22 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
-    console.log(customJson);
-  }
-
   render() {
     return (
-      <div>
-        <Navbar />
-        <MainContent />
-        <Footer />
-        <p> here</p>
-      </div>
+      <BrowserRouter>
+        <div>
+            <Navbar />
+                <div className="content">
+                    <Switch>
+                        <Route exact path='/' component={Home}/>
+                        <Route path='/trees' component={Trees}/>
+                        <Route path='/archive' component={Archive}/>
+                        <Route path='/about' component={About}/>
+                    </Switch>
+                </div>
+            <Footer />
+        </div>  
+      </BrowserRouter>
     );
   }
 }
