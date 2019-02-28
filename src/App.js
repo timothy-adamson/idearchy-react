@@ -7,18 +7,38 @@ import Trees from './MainContent/Trees';
 import Archive from './MainContent/Archive';
 import About from './MainContent/About';
 import Footer from './shared/footer';
-import customJson from './content/MOCK_DATA'
 
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      ideasData: [],
-      problemsData: []
+      treesData: []
     }
+    this.getData = this.getData.bind(this)
+  }
+
+  componentDidMount(){
+    this.getData();
+  }
+
+  getData() {
+    console.log('starting request')
+
+    this.setState()
+
+    fetch('https://localhost:5001/api/ideas')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          treesData: data
+        })
+      })
   }
 
   render() {
+
+    console.log(this.state.treesData)
+
     return (
       <BrowserRouter>
         <div>
@@ -26,7 +46,7 @@ class App extends Component {
                 <div className="content">
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route path='/trees' component={Trees}/>
+                        <Route path='/trees' render={(props) => (<Trees {...props} treesData={this.state.treesData}/>)}/>
                         <Route path='/archive' component={Archive}/>
                         <Route path='/about' component={About}/>
                     </Switch>
