@@ -43,7 +43,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
             <Navbar />
-                <div className="content">
+                <div className="content" id="tree-simple">
                     <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route path='/trees' render={(props) => (<Trees {...props} treesData={this.state.treesData}/>)}/>
