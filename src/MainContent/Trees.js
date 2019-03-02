@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import StartTree from './StartTree'
 import './Trees.css'
 import Tree from 'react-d3-tree'
 
@@ -43,7 +44,7 @@ const Trees = (props) => {
 
     return(
             <div className="tree">
-                {treeConfig !== null &&
+                {treeConfig !== null ?
                     <Tree
                         data={treeConfig}
                         orientation="vertical"
@@ -68,7 +69,8 @@ const Trees = (props) => {
                                 x: -viewportSizes.vw * 15,
                                 y: -viewportSizes.vh * 5
                             }
-                        }}/>
+                        }}/> :
+                    <StartTree />
                 }
             </div>
     )

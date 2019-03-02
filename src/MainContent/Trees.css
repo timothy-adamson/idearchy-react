@@ -1,6 +1,8 @@
 .tree
 {
     height: 90vh;
+    display: flex;
+    justify-content: center;
 }
 
 .card
@@ -21,13 +23,36 @@
 
 .cardType
 {
-    margin: 0px 0px auto auto;
+    margin: 0px;
     padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
     text-align: center;
-    box-shadow: inset 0 0 3px whitesmoke;
+}
+
+.cardType.idea
+{
+    background-color: whitesmoke;
+    color: #09182c;
+    box-shadow: inset 0 0 3px #09182c;
+}
+
+.cardType.idea.inactive
+{
+    cursor: pointer;
+    box-shadow: 0 0 3px #1e2e42;
+}
+
+.cardType.conundrum
+{
     background-color: #09182c;
     color: whitesmoke;
+    box-shadow: inset 0 0 3px #cee1fa;
+}
+
+.cardType.conundrum.inactive
+{
+    cursor: pointer;
+    box-shadow: 0 0 3px #1e2e42;
 }
 
 .ideaText
@@ -56,4 +81,40 @@
     grid-column-start: 2;
     grid-row-start: 3;
     white-space: nowrap;
+}
+
+.startTree
+{
+    text-align: center;
+    justify-content: center;
+    color: whitesmoke;
+    margin-top: 20vh;
+}
+
+.startCard
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0rem 0rem;
+    border: 0.2rem solid;
+    border-radius: 0.5rem;
+    padding: 1rem 0.5rem;
+    box-shadow: 2px 2px 5px  #646464;
+    border-color: cadetblue;
+}
+
+.startCard.idea
+{
+    background-color: rgb(236, 236, 236);
+}
+
+.startCard.conundrum
+{
+    background-color: #09182c 
+}
+
+.startInput
+{
+    padding: 0.5rem 5rem;
 }

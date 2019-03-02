@@ -9,7 +9,7 @@ const Navbar = () => {
                 idearchy
             </Link>
             <NavLink to="/trees" className="navOption" >
-                Today's Trees
+                Today's Tree
             </NavLink>
             <NavLink to="/archive" className="navOption" >
                 Archive

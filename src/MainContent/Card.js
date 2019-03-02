@@ -9,6 +9,10 @@ const Card = (props) => {
     const dateFormat = new Date(attributes.date)
     const weekday = days[dateFormat.getDay()]
 
+    const input = () => {
+        
+    }
+
     return(
         <div className="card" style={cardColor}>
             <p className="ideaText">
