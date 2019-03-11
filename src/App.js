@@ -24,8 +24,6 @@ class App extends Component {
   getData() {
     console.log('starting request')
 
-    this.setState()
-
     fetch('https://localhost:5001/api/ideas')
       .then(res => res.json())
       .then(data => {

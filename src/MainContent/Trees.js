@@ -44,6 +44,7 @@ const Trees = (props) => {
 
     return(
             <div className="tree">
+                <StartTree />
                 {treeConfig !== null ?
                     <Tree
                         data={treeConfig}

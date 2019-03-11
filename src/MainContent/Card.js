@@ -9,18 +9,23 @@ const Card = (props) => {
     const dateFormat = new Date(attributes.date)
     const weekday = days[dateFormat.getDay()]
 
-    const input = () => {
-        
+    const handleResponseClick = (e) => {
+        e.stopPropagation()
     }
+
 
     return(
         <div className="card" style={cardColor}>
             <p className="ideaText">
                 {attributes.text}
             </p>
-            <h5 className="cardType">
-                {attributes.isConundrum ? "Conundrum" : "Solution"}
-            </h5>
+            <div>
+                <h5
+                    className={"cardType inactive " + (attributes.isConundrum ? "conundrum" : "idea")}
+                    onClick={handleResponseClick}>
+                    {attributes.isConundrum ? "Conundrum" : "Solution"}
+                </h5>
+            </div>
             <div className="lineBreak"></div>
             <p className="date">
                 Sparked on {weekday}

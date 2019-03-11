@@ -8,7 +8,7 @@
 .card
 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-auto-rows: minmax(1rem,min-content);
     column-gap:0.5rem;
     margin: 0rem 0rem;
@@ -91,11 +91,8 @@
     margin-top: 20vh;
 }
 
-.startCard
+.inputCard
 {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     margin: 0rem 0rem;
     border: 0.2rem solid;
     border-radius: 0.5rem;
@@ -104,12 +101,19 @@
     border-color: cadetblue;
 }
 
-.startCard.idea
+.inputArea
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inputCard.idea
 {
     background-color: rgb(236, 236, 236);
 }
 
-.startCard.conundrum
+.inputCard.conundrum
 {
     background-color: #09182c 
 }
@@ -117,4 +121,9 @@
 .startInput
 {
     padding: 0.5rem 5rem;
+}
+
+.responseTarget
+{
+    color: #09182c
 }
