@@ -22,7 +22,7 @@ const IdeaInput = (props) => {
             const currentDate = new Date()
 
             const ideaDTO = {
-                parentID: null,
+                parentID: (props.cardID !== undefined ? props.cardID : null),
                 isConundrum: type !== "idea",
                 ideaText: inputText,
                 dateCreated: currentDate.toISOString(),
@@ -60,31 +60,23 @@ const IdeaInput = (props) => {
     }
 
     return (
-        <div className={"inputCard " + type}>
-            <div className="responseTarget">
-                <h5>
-                    Formulate your response to:
-                </h5>
-                <p>wiggy wiggy woo</p>
-            </div>
-            <div className="inputArea">
-                <h5
-                    className={"cardType idea" + (type !== "idea" ? " inactive" : "")}
-                    onClick={() => handleClick("idea")}>
-                    idea</h5>
-                <form onSubmit={handleSubmit} className="startInput">
-                    <input
-                        placeholder={type === "idea" ?
-                            "Your one of a kind idea..." : 
-                            "A befuddling conundrum..."}
-                        onChange={handleChange}></input>
-                    <input type="submit" value="Share"></input>
-                </form>
-                <h5
-                    className={"cardType conundrum" + (type !== "conundrum" ? " inactive" : "")}
-                    onClick={() => handleClick("conundrum")}>
-                    conundrum</h5>
-            </div>
+        <div className={"inputArea " + (props.startCard ? "inputCard " + type : "")}>
+            <h5
+                className={"cardType idea" + (type !== "idea" ? " inactive" : "")}
+                onClick={() => handleClick("idea")}>
+                idea</h5>
+            <form onSubmit={handleSubmit}>
+                <input
+                    placeholder={type === "idea" ?
+                        "Your one of a kind idea..." : 
+                        "A befuddling conundrum..."}
+                    onChange={handleChange}></input>
+                <input type="submit" value="Share"></input>
+            </form>
+            <h5
+                className={"cardType conundrum" + (type !== "conundrum" ? " inactive" : "")}
+                onClick={() => handleClick("conundrum")}>
+                conundrum</h5>
         </div>
     )
 }

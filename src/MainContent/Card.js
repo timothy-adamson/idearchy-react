@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
+import IdeaInput from './IdeaInput';
 
 
 const Card = (props) => {
+
+    const [inputMode,setInputMode] = useState(false)
 
     const attributes = props.nodeData.attributes
     const cardColor = {borderColor: 'cadetblue'}
@@ -10,27 +13,31 @@ const Card = (props) => {
     const weekday = days[dateFormat.getDay()]
 
     const handleResponseClick = (e) => {
+        setInputMode(!inputMode)
+
         e.stopPropagation()
     }
 
-
     return(
         <div className="card" style={cardColor}>
-            <p className="ideaText">
-                {attributes.text}
-            </p>
-            <div>
-                <h5
-                    className={"cardType inactive " + (attributes.isConundrum ? "conundrum" : "idea")}
-                    onClick={handleResponseClick}>
-                    {attributes.isConundrum ? "Conundrum" : "Solution"}
-                </h5>
+            <div className="cardDetails">
+                <p className="ideaText">
+                    {attributes.text}
+                </p>
+                <div>
+                    <h5
+                        className={"cardType inactive " + (attributes.isConundrum ? "conundrum" : "idea")}
+                        onClick={handleResponseClick}>
+                        {attributes.isConundrum ? "Conundrum" : "Solution"}
+                    </h5>
+                </div>
+                <div className="lineBreak"></div>
+                <p className="date">
+                    Sparked on {weekday}
+                </p>
+                <p className="location">Origin: {attributes.location}</p>
             </div>
-            <div className="lineBreak"></div>
-            <p className="date">
-                Sparked on {weekday}
-            </p>
-            <p className="location">Origin: {attributes.location}</p>
+            {inputMode ? <IdeaInput cardID={attributes.key}/> : ""}
         </div>
     )
 }
