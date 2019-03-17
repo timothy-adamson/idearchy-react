@@ -15,7 +15,7 @@ const IdeaInput = (props) => {
         setInputText(e.target.value)
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = (e) => {
 
         const sendIdeaData = (userCountry) => {
 
@@ -41,7 +41,10 @@ const IdeaInput = (props) => {
                 headers: {
                     "Content-Type": "application/json"
                 }
-            }).then((res) => console.log(res))
+            }).then((res) => {
+                console.log(res)
+                props.getTree(new Date().toISOString())
+            })
         }
         
         const ipStackAccessKey = '5f599eda3eaa8a332e1a1aa5421181ff'

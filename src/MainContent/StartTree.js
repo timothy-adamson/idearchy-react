@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import IdeaInput from './IdeaInput'
 
-const StartTree = () => {
+const StartTree = (props) => {
 
     return (
         <div className="startTree">

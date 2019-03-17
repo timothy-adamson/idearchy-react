@@ -7,13 +7,6 @@ import Tree from 'react-d3-tree'
 
 const Trees = (props) => {
 
-    const [treeHeight,setTreeHeight] = useState(0)
-
-    const addHeight = (height) => {
-        setTreeHeight(treeHeight + height)
-        console.log("adding height")
-    }
-
     const treeParent = props.treesData.find((idea) => {
         return idea.parentID === null
     })
@@ -26,8 +19,7 @@ const Trees = (props) => {
             key: parent.ideaID,
             date: parent.dateCreated,
             isConundrum: parent.isConundrum,
-            location: parent.fromCountry,
-            addHeight: addHeight
+            location: parent.fromCountry
         }
         const children = props.treesData.filter((child) => child.parentID === parent.ideaID)
         
@@ -51,13 +43,13 @@ const Trees = (props) => {
     }
 
     return(
-        <div className="tree" style={{height: "200vh"}}>
-            <StartTree />
+        <div className="tree">
             {treeConfig !== null ?
                 <Tree
                     data={treeConfig}
                     orientation="vertical"
-                    zoomable={false}
+                    zoomable={true}
+                    scaleExtent={{min: 0.5, max: 1}}
                     collapsible={false}
                     translate={{
                         x: (viewportSizes.vw * 48),
@@ -65,7 +57,7 @@ const Trees = (props) => {
                     }}
                     nodeSize={{
                         x: viewportSizes.vw * 30,
-                        y: viewportSizes.vh * 20
+                        y: viewportSizes.vh * 18
                     }}
                     textLayout={{
                         textAnchor: "middle",
@@ -75,7 +67,7 @@ const Trees = (props) => {
                     }}
                     allowForeignObjects
                     nodeLabelComponent={{
-                        render: <Card />,
+                        render: <Card/>,
                         foreignObjectWrapper: {
                             x: -viewportSizes.vw * 15,
                             y: -viewportSizes.vh * 5
@@ -87,7 +79,7 @@ const Trees = (props) => {
                         }
                     }}
                     /> :
-                <StartTree />
+                <StartTree getTree={props.getTree}/>
             }
         </div>
     )

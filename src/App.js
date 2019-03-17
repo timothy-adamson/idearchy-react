@@ -14,34 +14,30 @@ class App extends Component {
     this.state = {
       treesData: []
     }
-    this.getData = this.getData.bind(this)
+    this.getData = this.getTree.bind(this)
   }
 
   componentDidMount(){
-    this.getData();
+    this.getTree(new Date().toISOString());
   }
 
-  getData() {
-    console.log('starting request')
-
-    fetch('https://localhost:5001/api/ideas')
+  getTree(date) {
+    fetch(`https://localhost:5001/api/trees?date=${date}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
           treesData: data
         })
+        console.log(this.state.treesData)
       })
   }
 
   render() {
-
-    console.log(this.state.treesData)
-
     return (
       <BrowserRouter>
         <div>
             <Navbar />
-                <div className="content" id="tree-simple">
+                <div className="content">
                     <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route path='/trees' render={(props) => (<Trees {...props} treesData={this.state.treesData}/>)}/>
