@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       treesData: []
     }
-    this.getData = this.getTree.bind(this)
+    this.getTree = this.getTree.bind(this)
   }
 
   componentDidMount(){
@@ -40,7 +40,7 @@ class App extends Component {
                 <div className="content">
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route path='/trees' render={(props) => (<Trees {...props} treesData={this.state.treesData}/>)}/>
+                        <Route path='/trees' render={(props) => (<Trees {...props} treesData={this.state.treesData} getTree={this.getTree}/>)}/>
                         <Route path='/archive' component={Archive}/>
                         <Route path='/about' component={About}/>
                     </Switch>

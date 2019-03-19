@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Card from './Card'
 import StartTree from './StartTree'
 import './Trees.css'
@@ -19,7 +19,8 @@ const Trees = (props) => {
             key: parent.ideaID,
             date: parent.dateCreated,
             isConundrum: parent.isConundrum,
-            location: parent.fromCountry
+            location: parent.fromCountry,
+            getTree: props.getTree
         }
         const children = props.treesData.filter((child) => child.parentID === parent.ideaID)
         

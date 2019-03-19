@@ -37,7 +37,7 @@ const Card = (props) => {
                 </p>
                 <p className="location">Origin: {attributes.location}</p>
             </div>
-            {inputMode ? <IdeaInput cardID={attributes.key}/> : ""}
+            {inputMode ? <IdeaInput cardID={attributes.key} getTree={attributes.getTree}/> : ""}
         </div>
     )
 }

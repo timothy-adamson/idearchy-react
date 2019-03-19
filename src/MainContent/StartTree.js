@@ -7,7 +7,7 @@ const StartTree = (props) => {
         <div className="startTree">
             <h1>today's tree hasn't been started yet</h1>
             <h2>spark it here</h2>
-            <IdeaInput startCard={true}/>
+            <IdeaInput startCard={true} getTree={props.getTree}/>
         </div>
     )
 }
