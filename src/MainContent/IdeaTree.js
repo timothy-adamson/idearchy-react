@@ -1,15 +1,10 @@
 import React from 'react'
 import Card from './Card'
 import StartTree from './StartTree'
-import './Trees.css'
+import './Tree.css'
 import Tree from 'react-d3-tree'
 
-
-const Trees = (props) => {
-
-    const treeParent = props.treesData.find((idea) => {
-        return idea.parentID === null
-    })
+const IdeaTree = (props) => {
 
     const getChildren = (parent) => {
 
@@ -35,8 +30,12 @@ const Trees = (props) => {
             }
         }
     }
-    
-    const treeConfig = treeParent !== undefined ? getChildren(treeParent) : null
+
+    const treeParent = props.treesData !== undefined && props.treesData.find((idea) => {
+        return idea.parentID === null
+    })
+
+    const treeConfig = treeParent ? getChildren(treeParent) : null
 
     const viewportSizes = {
         vw: window.screen.width / 100,
@@ -80,10 +79,16 @@ const Trees = (props) => {
                         }
                     }}
                     /> :
-                <StartTree getTree={props.getTree}/>
+                props.archiveTree ?
+                    <div className="startTree">
+                        <h1>
+                            no tree was made on this day :(
+                        </h1>
+                    </div> :
+                    <StartTree getTree={props.getTree}/>
             }
         </div>
     )
 }
 
-export default Trees
+export default IdeaTree

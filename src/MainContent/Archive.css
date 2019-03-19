@@ -1,0 +1,26 @@
+.dateSelector
+{
+    padding-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    width: 100%;
+}
+
+.selectorHeading
+{
+    margin: 0px auto;
+    color: whitesmoke;
+}
+
+.selectorBtn
+{
+    margin: 0px;
+    text-align: center;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.selectorBtn::selection
+{
+    background-color: transparent;
+}

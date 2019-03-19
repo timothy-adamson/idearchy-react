@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
 import Navbar from './shared/navbar';
 import Home from './MainContent/Home';
-import Trees from './MainContent/Trees';
+import TodaysTree from './MainContent/TodaysTree';
 import Archive from './MainContent/Archive';
 import About from './MainContent/About';
 import Footer from './shared/footer';
@@ -12,21 +12,33 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      treesData: []
+      treesData: [],
+      viewDate: new Date()
     }
     this.getTree = this.getTree.bind(this)
   }
 
   componentDidMount(){
-    this.getTree(new Date().toISOString());
+    this.getTree(this.state.viewDate);
   }
 
   getTree(date) {
-    fetch(`https://localhost:5001/api/trees?date=${date}`)
-      .then(res => res.json())
+    fetch(`https://localhost:5001/api/trees?date=${date.toISOString()}`)
+      .then(res => {
+        if (res.status !== 404){
+          return res.json()
+        }
+        else{
+          return this.setState({
+            treesData: [],
+            viewDate: date
+          })
+        }
+      })
       .then(data => {
         this.setState({
-          treesData: data
+          treesData: data,
+          viewDate: date
         })
         console.log(this.state.treesData)
       })
@@ -36,12 +48,18 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-            <Navbar />
+            <Navbar getTree={this.getTree}/>
                 <div className="content">
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route path='/trees' render={(props) => (<Trees {...props} treesData={this.state.treesData} getTree={this.getTree}/>)}/>
-                        <Route path='/archive' component={Archive}/>
+                        <Route path='/trees' render={() => <TodaysTree
+                          treesData={this.state.treesData}
+                          viewDate={this.state.viewDate}
+                          getTree={this.getTree}/>}/>
+                        <Route path='/archive' render={() => <Archive
+                          treesData={this.state.treesData}
+                          viewDate={this.state.viewDate}
+                          getTree={this.getTree}/>}/>
                         <Route path='/about' component={About}/>
                     </Switch>
                 </div>

@@ -43,7 +43,7 @@ const IdeaInput = (props) => {
                 }
             }).then((res) => {
                 console.log(res)
-                props.getTree(new Date().toISOString())
+                props.getTree()
             })
         }
         
