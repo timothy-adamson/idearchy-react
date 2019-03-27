@@ -8,7 +8,6 @@ const Archive = (props) => {
     yestDate.setDate(yestDate.getDate() - 1)
 
     const showingYesterday = props.viewDate.toDateString() === yestDate.toDateString()
-    console.log(showingYesterday)
 
     if (props.viewDate.toDateString() === new Date().toDateString()){
         let refDate = new Date()
@@ -30,7 +29,7 @@ const Archive = (props) => {
 
         props.getTree(refDate)
     }
-
+    
     const formatDate = () => {
         const options = {
             weekday: 'long',
@@ -49,7 +48,10 @@ const Archive = (props) => {
                 <h1 className="selectorHeading">{formatDate()}</h1>
                 {!showingYesterday ? <h3 className="selectorBtn" onClick={nextDay}>Next Day</h3> : ""}
             </div>
-            <IdeaTree treesData={props.treesData} archiveTree={true}/>
+            <IdeaTree
+                treesData={props.treesData}
+                archiveTree={true}
+                apiUri={props.apiUri}/>
         </div>
     )
 }

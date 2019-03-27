@@ -17,7 +17,8 @@ const IdeaTree = (props) => {
             location: parent.fromCountry,
             score: parent.score,
             getTree: props.getTree,
-            archiveTree: props.archiveTree
+            archiveTree: props.archiveTree,
+            apiUri: props.apiUri
         }
         const children = props.treesData.filter((child) => child.parentID === parent.ideaID)
         

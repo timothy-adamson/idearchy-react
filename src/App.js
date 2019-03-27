@@ -15,6 +15,8 @@ class App extends Component {
       treesData: [],
       viewDate: new Date()
     }
+    this.apiUri = 'https://idearchyapi.azurewebsites.net'
+
     this.getTree = this.getTree.bind(this)
   }
 
@@ -23,7 +25,8 @@ class App extends Component {
   }
 
   getTree(date) {
-    fetch(`https://localhost:5001/api/trees?date=${date.toISOString()}`)
+
+    fetch(`${this.apiUri}/api/trees?date=${date.toISOString()}`)
       .then(res => {
         if (res.status !== 404){
           return res.json()
@@ -55,11 +58,13 @@ class App extends Component {
                         <Route path='/trees' render={() => <TodaysTree
                           treesData={this.state.treesData}
                           viewDate={this.state.viewDate}
-                          getTree={this.getTree}/>}/>
+                          getTree={this.getTree}
+                          apiUri={this.apiUri}/>}/>
                         <Route path='/archive' render={() => <Archive
                           treesData={this.state.treesData}
                           viewDate={this.state.viewDate}
-                          getTree={this.getTree}/>}/>
+                          getTree={this.getTree}
+                          apiUri={this.apiUri}/>}/>
                         <Route path='/about' component={About}/>
                     </Switch>
                 </div>

@@ -34,7 +34,7 @@ const IdeaInput = (props) => {
 
             console.log(ideaJson);
 
-            fetch('https://localhost:5001/api/ideas',{
+            fetch(`${props.apiUri}/api/ideas`,{
                 method: "POST",
                 mode: "cors",
                 body: ideaJson,

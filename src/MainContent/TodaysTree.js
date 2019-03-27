@@ -10,7 +10,8 @@ const TodaysTree = (props) => {
     return(
         <div>
             <IdeaTree 
-                treesData={props.treesData}/>}/>
+                treesData={props.treesData}
+                apiUri={props.apiUri}/>}/>
         </div>
     )
 }
