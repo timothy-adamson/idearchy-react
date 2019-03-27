@@ -15,7 +15,9 @@ const IdeaTree = (props) => {
             date: parent.dateCreated,
             isConundrum: parent.isConundrum,
             location: parent.fromCountry,
-            getTree: props.getTree
+            score: parent.score,
+            getTree: props.getTree,
+            archiveTree: props.archiveTree
         }
         const children = props.treesData.filter((child) => child.parentID === parent.ideaID)
         
@@ -49,7 +51,7 @@ const IdeaTree = (props) => {
                     data={treeConfig}
                     orientation="vertical"
                     zoomable={true}
-                    scaleExtent={{min: 0.5, max: 1}}
+                    scaleExtent={{min: 1, max: 1}}
                     collapsible={false}
                     translate={{
                         x: (viewportSizes.vw * 48),
@@ -57,7 +59,7 @@ const IdeaTree = (props) => {
                     }}
                     nodeSize={{
                         x: viewportSizes.vw * 30,
-                        y: viewportSizes.vh * 18
+                        y: viewportSizes.vh * 20
                     }}
                     textLayout={{
                         textAnchor: "middle",

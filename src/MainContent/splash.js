@@ -5,12 +5,12 @@ const Splash = () => {
     return (
         <div className='splash'>
             <h1>idearchy</h1>
-            <h3>share ideas</h3>
-            <input placeholder="shoot our garbage at the sun"></input>
+            <h3>debate ideas that matter to you...</h3>
+            <input placeholder="All cars should be self-driving!"></input>
             <span><button>Share</button></span>
-            <h3>solve conundrums</h3>
+            <h3>...get a new perspective</h3>
             <div className='problemCard'>
-                "i can't see my toes"
+                "should we still be using cars in the future?"
             </div>
         </div>
     )

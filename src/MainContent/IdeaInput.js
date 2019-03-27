@@ -63,7 +63,7 @@ const IdeaInput = (props) => {
     }
 
     return (
-        <div className={"inputArea " + (props.startCard ? "inputCard " + type : "")}>
+        <div className={"inputArea " + (props.startCard ? "inputCard " + type : "treeInput")}>
             <h5
                 className={"cardType idea" + (type !== "idea" ? " inactive" : "")}
                 onClick={() => handleClick("idea")}>

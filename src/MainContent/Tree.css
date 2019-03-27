@@ -35,12 +35,79 @@
     display: flex;
 }
 
-.cardType
+.scoreArea
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 0.5rem;
+}
+
+.scoreArea>.btn
 {
     margin: 0px;
+    border-radius: 0.3rem;
+    padding: 0px;
+    width: 6rem;
+    text-align: center;
+    font-size: small;
+    color:whitesmoke;
+    box-shadow: 2px 2px 3px #1e2e42;
+    cursor: pointer;
+}
+
+.score
+{
+    font-size: x-large;
+    margin: 0px 1rem 0px 0px;
+    border-radius: 0.3rem;
+    padding: 0px;
+    width: 6rem;
+    text-align: center;
+    grid-column-start: 1;
+    grid-row: 1;
+    background-color: #13092c;
+    color: whitesmoke;
+}
+
+.vote
+{
+    background-color: #1c2e46;
+    grid-column: 2;
+}
+
+.vote:hover
+{
+    background-color: #395f91;
+}
+
+.respondBtn
+{
+    margin: 0px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.3rem;
+    padding: 0px;
+    text-align: center;
+    font-size: small;
+    color:whitesmoke;
+    box-shadow: 2px 2px 3px #1e2e42;
+    cursor: pointer;
+    background-color: #09182c;
+    grid-column: 2;
+}
+
+.respondBtn:hover
+{
+    background-color: #1b4781;
+}
+
+.cardType
+{
+    margin: auto;
     padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
     text-align: center;
+    font-size: small;
 }
 
 .cardType::selection
@@ -74,9 +141,14 @@
     box-shadow: 0 0 3px #1e2e42;
 }
 
+.cardType:hover
+{
+    background-color: rgba(166, 126, 240, 0.212);
+}
+
 .ideaText
 {
-    margin: 0px 0px;
+    margin: 0px;
 }
 
 .lineBreak
@@ -117,7 +189,7 @@
 .inputCard
 {
     margin: auto;
-    width: 40vw;
+    width: 35vw;
     border: 0.2rem solid;
     border-radius: 0.5rem;
     padding: 1rem 0.5rem;
@@ -130,8 +202,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 1rem;
-    padding-bottom: 0.2rem;
+}
+
+.treeInput
+{
+    padding-top: 0.3rem;
 }
 
 .inputCard.idea
@@ -142,11 +217,6 @@
 .inputCard.conundrum
 {
     background-color: #09182c 
-}
-
-.startInput
-{
-    padding: 0.5rem 5rem;
 }
 
 .responseTarget
