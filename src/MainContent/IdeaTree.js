@@ -88,7 +88,7 @@ const IdeaTree = (props) => {
                             no tree was made on this day :(
                         </h1>
                     </div> :
-                    <StartTree getTree={props.getTree}/>
+                    <StartTree getTree={props.getTree} apiUri={props.apiUri}/>
             }
         </div>
     )
