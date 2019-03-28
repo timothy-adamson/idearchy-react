@@ -20,10 +20,6 @@ class App extends Component {
     this.getTree = this.getTree.bind(this)
   }
 
-  componentDidMount(){
-    this.getTree(this.state.viewDate);
-  }
-
   getTree(date) {
 
     fetch(`${this.apiUri}/api/trees?date=${date.toISOString()}`)
@@ -50,8 +46,8 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-            <Navbar getTree={this.getTree}/>
+        <div className="container">
+            <Navbar/>
                 <div className="content">
                     <Switch>
                         <Route exact path='/' component={Home}/>

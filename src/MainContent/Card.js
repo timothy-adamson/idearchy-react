@@ -9,9 +9,32 @@ const Card = (props) => {
     const [displayedScore,setDisplayedScore] = useState(attributes.score)
 
     const cardColor = {borderColor: 'cadetblue'}
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-    const dateFormat = new Date(attributes.date)
-    const weekday = days[dateFormat.getDay()]
+
+    const formatDate = () => {
+        const postDate = new Date(attributes.date)
+        const timeElapsed = Date.now() - postDate
+
+        const seconds = timeElapsed / 1000
+        if (seconds > 60){
+            const minutes = seconds / 60
+            if (minutes > 60){
+                const hours = minutes / 60
+                if (hours > 24){
+                    const days = hours / 24
+                    return `${days}d`
+                }
+                else{
+                    return `${hours}h`
+                }
+            }
+            else{
+                return `${minutes}m`
+            }
+        }
+        else{
+            return `${seconds}s`
+        }
+    }
 
     const handleResponseClick = (e) => {
         if (!attributes.archiveTree){
@@ -66,7 +89,7 @@ const Card = (props) => {
                     Respond
                 </h5>
                 <p className="date">
-                    Sparked on {weekday}
+                    {formatDate()}
                 </p>
                 <p className="location">Origin: {attributes.location}</p>
             </div>

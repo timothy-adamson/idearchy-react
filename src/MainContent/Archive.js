@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import './Archive.css'
 import IdeaTree from './IdeaTree'
+import '../shared/spinner.css'
 
 const Archive = (props) => {
 
     const [showingLastWeek, setShowingLastWeek] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const lastWeekStart = () => {
         let refDate = new Date()
@@ -16,6 +18,7 @@ const Archive = (props) => {
     useEffect(() => {
         if ((props.viewDate.toDateString() === lastWeekStart().toDateString()) !== showingLastWeek){
             setShowingLastWeek(!showingLastWeek)
+            setLoading(false)
         }
     })
 
@@ -52,15 +55,22 @@ const Archive = (props) => {
 
     return (
         <div>
-            <div className="dateSelector">
-                <h3 className="selectorBtn" onClick={prevWeek}>Previous Week</h3>
-                <h1 className="selectorHeading">{formatDate()}</h1>
-                {!showingLastWeek ? <h3 className="selectorBtn" onClick={nextWeek}>Next Week</h3> : ""}
-            </div>
-            <IdeaTree
-                treesData={props.treesData}
-                archiveTree={true}
-                apiUri={props.apiUri}/>
+            {loading ?
+                <div className="loadingContainer">
+                    <div className="loadingSpinner"></div>
+                </div> :
+                <div>
+                    <div className="dateSelector">
+                        <h3 className="selectorBtn" onClick={prevWeek}>Previous Week</h3>
+                        <h1 className="selectorHeading">{formatDate()}</h1>
+                        {!showingLastWeek ? <h3 className="selectorBtn" onClick={nextWeek}>Next Week</h3> : ""}
+                    </div>
+                    <IdeaTree
+                        treesData={props.treesData}
+                        archiveTree={true}
+                        apiUri={props.apiUri}/>
+                </div>
+            }
         </div>
     )
 }

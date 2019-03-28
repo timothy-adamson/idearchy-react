@@ -85,7 +85,7 @@ const IdeaTree = (props) => {
                 props.archiveTree ?
                     <div className="startTree">
                         <h1>
-                            no tree was made on this day :(
+                            no tree was made this week :(
                         </h1>
                     </div> :
                     <StartTree getTree={props.getTree} apiUri={props.apiUri}/>
