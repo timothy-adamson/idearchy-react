@@ -21,40 +21,29 @@ const Card = (props) => {
         e.stopPropagation()
     }
 
+    const patchCall = (storageItemExists) => {
+        fetch(`${attributes.apiUri}/api/ideas/${attributes.key}`,{
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(!storageItemExists)
+        })
+            .then(res => {
+                if(res.status !== 404){
+                    setDisplayedScore(displayedScore + (storageItemExists ? -1 : 1))
+                    localStorage.setItem(attributes.key,!storageItemExists)
+                }
+            })
+    }
+
     const handleVoteClick = (e) => {
         const storageItem = JSON.parse(localStorage.getItem(attributes.key))
-        console.log(storageItem)
-        
-        if (!storageItem || storageItem === null){
-            fetch(`https://localhost:5001/api/ideas/${attributes.key}`,{
-                method: "PATCH",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(true)
-            })
-                .then(res => {
-                    if(res.status !== 404){
-                        setDisplayedScore(displayedScore + 1)
-                        localStorage.setItem(attributes.key,true)
-                    }
-                })
-        }
-        else if (storageItem){
-            fetch(`https://localhost:5001/api/ideas/${attributes.key}`,{
-                method: "PATCH",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(false)
-            })
-                .then(res => {
-                    if(res.status !== 404){
-                        setDisplayedScore(displayedScore - 1)
-                        localStorage.setItem(attributes.key,false)
-                    }
-                })
-        }
+    
+        const storageItemExists = storageItem === null ? false : storageItem
+
+        patchCall(storageItemExists)
+
         e.stopPropagation()
     }
 

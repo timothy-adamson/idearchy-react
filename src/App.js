@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
 import Navbar from './shared/navbar';
 import Home from './MainContent/Home';
-import TodaysTree from './MainContent/TodaysTree';
+import CurrentTree from './MainContent/CurrentTree';
 import Archive from './MainContent/Archive';
 import About from './MainContent/About';
 import Footer from './shared/footer';
@@ -55,7 +55,7 @@ class App extends Component {
                 <div className="content">
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route path='/trees' render={() => <TodaysTree
+                        <Route path='/trees' render={() => <CurrentTree
                           treesData={this.state.treesData}
                           viewDate={this.state.viewDate}
                           getTree={this.getTree}

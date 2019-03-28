@@ -1,7 +1,7 @@
 import React from 'react'
 import IdeaTree from './IdeaTree'
 
-const TodaysTree = (props) => {
+const CurrentTree = (props) => {
 
     if (props.viewDate.toDateString() !== new Date().toDateString()){
         props.getTree(new Date())
@@ -16,4 +16,4 @@ const TodaysTree = (props) => {
     )
 }
 
-export default TodaysTree
+export default CurrentTree

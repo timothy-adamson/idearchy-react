@@ -1,52 +1,61 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './Archive.css'
 import IdeaTree from './IdeaTree'
 
 const Archive = (props) => {
 
-    let yestDate = new Date()
-    yestDate.setDate(yestDate.getDate() - 1)
+    const [showingLastWeek, setShowingLastWeek] = useState(false)
 
-    const showingYesterday = props.viewDate.toDateString() === yestDate.toDateString()
+    const lastWeekStart = () => {
+        let refDate = new Date()
+        refDate.setDate(refDate.getDate() - refDate.getDay() - 7)
+
+        return refDate
+    }
+
+    useEffect(() => {
+        if ((props.viewDate.toDateString() === lastWeekStart().toDateString()) !== showingLastWeek){
+            setShowingLastWeek(!showingLastWeek)
+        }
+    })
 
     if (props.viewDate.toDateString() === new Date().toDateString()){
-        let refDate = new Date()
-        refDate.setDate(refDate.getDate() - 1)
+        props.getTree(lastWeekStart())
+    }
+
+    const nextWeek = () => {
+        let refDate = new Date(props.viewDate)
+        refDate.setDate(refDate.getDate() + 7)
 
         props.getTree(refDate)
     }
 
-    const nextDay = () => {
+    const prevWeek = () => {
         let refDate = new Date(props.viewDate)
-        refDate.setDate(refDate.getDate() + 1)
-
-        props.getTree(refDate)
-    }
-
-    const prevDay = () => {
-        let refDate = new Date(props.viewDate)
-        refDate.setDate(refDate.getDate() - 1)
+        refDate.setDate(refDate.getDate() - 7)
 
         props.getTree(refDate)
     }
     
     const formatDate = () => {
+        let refDate = new Date(props.viewDate)
+        refDate.setDate(refDate.getDate() + 6)
+        const endOfWeek = new Date(refDate)
+
         const options = {
-            weekday: 'long',
-            year: 'numeric',
             month: "long",
             day:"numeric"
         }
 
-        return showingYesterday ? "Yesterday" : props.viewDate.toLocaleDateString('en-GB',options)
+        return showingLastWeek ? "Last Week" : `${props.viewDate.toLocaleDateString('en-GB',options)} - ${endOfWeek.toLocaleDateString('en-GB',options)}`
     }
 
     return (
         <div>
             <div className="dateSelector">
-                <h3 className="selectorBtn" onClick={prevDay}>Previous day</h3>
+                <h3 className="selectorBtn" onClick={prevWeek}>Previous Week</h3>
                 <h1 className="selectorHeading">{formatDate()}</h1>
-                {!showingYesterday ? <h3 className="selectorBtn" onClick={nextDay}>Next Day</h3> : ""}
+                {!showingLastWeek ? <h3 className="selectorBtn" onClick={nextWeek}>Next Week</h3> : ""}
             </div>
             <IdeaTree
                 treesData={props.treesData}
