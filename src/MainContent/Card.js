@@ -21,18 +21,18 @@ const Card = (props) => {
                 const hours = minutes / 60
                 if (hours > 24){
                     const days = hours / 24
-                    return `${days}d`
+                    return `${Math.floor(days)}d`
                 }
                 else{
-                    return `${hours}h`
+                    return `${Math.floor(hours)}h`
                 }
             }
             else{
-                return `${minutes}m`
+                return `${Math.floor(minutes)}m`
             }
         }
         else{
-            return `${seconds}s`
+            return `${Math.floor(seconds)}s`
         }
     }
 

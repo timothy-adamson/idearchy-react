@@ -13,7 +13,7 @@ class App extends Component {
     super()
     this.state = {
       treesData: [],
-      viewDate: new Date()
+      viewDate: new Date(0)
     }
     this.apiUri = 'https://idearchyapi.azurewebsites.net'
 

@@ -24,7 +24,8 @@ const CurrentTree = (props) => {
                 </div> :
                 <IdeaTree 
                     treesData={props.treesData}
-                    apiUri={props.apiUri}/>
+                    apiUri={props.apiUri}
+                    getTree={props.getTree}/>
             }
         </div>
     )
