@@ -8,6 +8,10 @@ footer{
     align-items: center;
 }
 
+footer > div{
+    flex-grow: 3
+}
+
 footer > a{
     display: flex;
     align-items: center;

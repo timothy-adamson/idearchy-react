@@ -4,4 +4,30 @@
     background-size: cover;
     padding: 30vh 0px;
     text-align: center;
+    box-shadow: 3px 10px 10px #2e486d;
+}
+
+.description{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: whitesmoke;
+    margin: 3rem;
+}
+
+.card{
+    margin: 0px;
+}
+
+
+.ideaText{
+    color: initial
+}
+
+.date{
+    color: initial
+}
+
+.location{
+    color: initial
 }

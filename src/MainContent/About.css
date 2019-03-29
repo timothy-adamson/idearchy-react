@@ -1,0 +1,7 @@
+.about{
+    display: flex;
+    flex-direction: column;
+    padding-top: 30vh;
+    color: whitesmoke;
+    align-items: center;
+}

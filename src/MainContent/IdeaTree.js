@@ -45,6 +45,8 @@ const IdeaTree = (props) => {
         vh: window.screen.height / 100,
     }
 
+    const aspectRatio = window.screen.height / window.screen.width
+
     return(
         <div className="tree">
             {treeConfig !== null ?
@@ -55,25 +57,25 @@ const IdeaTree = (props) => {
                     scaleExtent={{min: 1, max: 1}}
                     collapsible={false}
                     translate={{
-                        x: (viewportSizes.vw * 48),
-                        y: (viewportSizes.vh * 10)
+                        x: (viewportSizes.vw * 50),
+                        y: (viewportSizes.vh * 20)
                     }}
                     nodeSize={{
-                        x: viewportSizes.vw * 30,
-                        y: viewportSizes.vh * 20
+                        x: 500,
+                        y: 250
                     }}
                     textLayout={{
                         textAnchor: "middle",
-                        x: 30,
-                        y: 30,
+                        x: 0,
+                        y: 0,
                         transform: undefined
                     }}
                     allowForeignObjects
                     nodeLabelComponent={{
                         render: <Card/>,
                         foreignObjectWrapper: {
-                            x: -viewportSizes.vw * 15,
-                            y: -viewportSizes.vh * 5
+                            x: -250,
+                            y: -100
                         }
                     }}
                     styles={{

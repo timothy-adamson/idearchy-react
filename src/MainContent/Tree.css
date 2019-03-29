@@ -1,7 +1,7 @@
 .tree
 {
     margin: auto;
-    height: 80vh;
+    height: 90vh;
 }
 
 .rd3t-tree-container
@@ -16,8 +16,6 @@
     border-radius: 0.5rem;
     padding: 0.3rem 0.5rem;
     background-color: rgb(236, 236, 236);
-    max-width: 30vw;
-    max-height: 40vh;
     box-shadow: 2px 2px 5px  #646464;
     cursor: default;
 }
