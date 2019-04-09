@@ -11,4 +11,4 @@ The tree diagram style visualizes the flow of debate differently. This could sho
 idearchy is built with React on the front-end, which consumes a .NET Core Web API. There is also an Azure SQL database which stores the tree data. All of these component are hosted on Azure.
 
 
-If you are interested in more of my work, please visit [my porfolio](https://timothyadamson.com)
+If you are interested in more of my work, please visit [my portfolio](https://timothyadamson.com).
