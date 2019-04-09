@@ -12,6 +12,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
+      //State variables store tree data from API calls and which date was requested
       treesData: [],
       viewDate: new Date(0)
     }
@@ -20,10 +21,11 @@ class App extends Component {
     this.getTree = this.getTree.bind(this)
   }
 
+  //Universal method to store tree data from a particular date
   getTree(date) {
-
     fetch(`${this.apiUri}/api/trees?date=${date.toISOString()}`)
       .then(res => {
+        console.log(res)
         if (res.status !== 404){
           return res.json()
         }

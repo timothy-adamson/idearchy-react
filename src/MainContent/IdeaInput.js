@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 
 const IdeaInput = (props) => {
 
+    // Hooks store input state
     const [type, setType] = useState("idea")
     const [inputText, setInputText] = useState("")
 
@@ -17,10 +18,12 @@ const IdeaInput = (props) => {
 
     const handleSubmit = (e) => {
 
+        // POST method is called asynchronously when user IP is determined (for location)
         const sendIdeaData = (userCountry) => {
 
             const currentDate = new Date()
 
+            // Data Transfer Object for back-end Validation
             const ideaDTO = {
                 parentID: (props.cardID !== undefined ? props.cardID : null),
                 isConundrum: type !== "idea",

@@ -3,6 +3,8 @@ import IdeaInput from './IdeaInput'
 
 const StartTree = (props) => {
 
+    // Placeholder component for empty weeks
+
     return (
         <div className="startTree">
             <h1>this weeks tree hasn't been started yet</h1>

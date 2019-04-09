@@ -5,6 +5,7 @@ import IdeaInput from './IdeaInput';
 const Card = (props) => {
 
     const attributes = props.nodeData.attributes
+    // Hooks enable toggling of user input elements
     const [inputMode,setInputMode] = useState(false)
     const [displayedScore,setDisplayedScore] = useState(attributes.score)
 
@@ -44,6 +45,7 @@ const Card = (props) => {
         e.stopPropagation()
     }
 
+    // PATCH HTTP Request to update score of item in database
     const patchCall = (storageItemExists) => {
         fetch(`${attributes.apiUri}/api/ideas/${attributes.key}`,{
             method: "PATCH",

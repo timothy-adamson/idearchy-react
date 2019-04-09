@@ -5,9 +5,11 @@ import '../shared/spinner.css'
 
 const Archive = (props) => {
 
+    // Hooks for dynamic date display and loading spinner
     const [showingLastWeek, setShowingLastWeek] = useState(false)
     const [loading, setLoading] = useState(true)
 
+    // Returns the date of the Sunday previous of the most recent (Start of the week previous week)
     const lastWeekStart = () => {
         let refDate = new Date()
         refDate.setDate(refDate.getDate() - refDate.getDay() - 7)
@@ -15,6 +17,7 @@ const Archive = (props) => {
         return refDate
     }
 
+    // Side effect hook checks and sets visual hooks on state changes
     useEffect(() => {
         if ((props.viewDate.toDateString() === lastWeekStart().toDateString()) !== showingLastWeek){
             setShowingLastWeek(!showingLastWeek)
@@ -22,10 +25,12 @@ const Archive = (props) => {
         }
     })
 
+    // Check if the current view is This weeks tree, set to previous weeks by default
     if (props.viewDate.toDateString() === new Date().toDateString()){
         props.getTree(lastWeekStart())
     }
 
+    // Navigation methods
     const nextWeek = () => {
         let refDate = new Date(props.viewDate)
         refDate.setDate(refDate.getDate() + 7)

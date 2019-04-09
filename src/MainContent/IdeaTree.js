@@ -6,6 +6,8 @@ import Tree from 'react-d3-tree'
 
 const IdeaTree = (props) => {
 
+    // Recursive function gathers data from parent to all children
+    // Returns tree-structured JSON Data treeConfig
     const getChildren = (parent) => {
 
         const name = parent.ideaText
@@ -40,12 +42,11 @@ const IdeaTree = (props) => {
 
     const treeConfig = treeParent ? getChildren(treeParent) : null
 
+    // Viewport scaling for responsiveness
     const viewportSizes = {
         vw: window.screen.width / 100,
         vh: window.screen.height / 100,
     }
-
-    const aspectRatio = window.screen.height / window.screen.width
 
     return(
         <div className="tree">
