@@ -1,6 +1,6 @@
 # idearchy
 
-This project is now live at [idearchy.com](https://idearchy.com)
+This project is now live at [idearchy.com](http://idearchy.com)
 
 'idearchy' is a personal project by Tim Adamson. The initial idea was to create a social media site similar to twitter, but instead of a like button a "This changed my mind" button incentivized competitive debate.
 
