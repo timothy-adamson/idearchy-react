@@ -13,7 +13,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/timothyadamson/" target="_blank" rel="noopener noreferrer">
                 <img src="/Linkedin_Logo.png" alt="Link to my LinkedIn profile"></img>
             </a>
-            <a href="#">
+            <a href="http://timothyadamson.com">
                 Portfolio
             </a>
         </footer>

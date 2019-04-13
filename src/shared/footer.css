@@ -18,6 +18,18 @@ footer > a{
     padding: 0rem 1rem;
 }
 
+footer > a:link{
+    color: black;
+}
+
+footer > a:hover{
+    color: #2e486d;
+}
+
+footer > a:active{
+    color: #09182c;
+}
+
 footer > a > img{
     width: auto;
     max-height: 1.5rem;
