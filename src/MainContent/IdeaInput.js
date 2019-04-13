@@ -67,10 +67,6 @@ const IdeaInput = (props) => {
 
     return (
         <div className={"inputArea " + (props.startCard ? "inputCard " + type : "treeInput")}>
-            <h5
-                className={"cardType idea" + (type !== "idea" ? " inactive" : "")}
-                onClick={() => handleClick("idea")}>
-                idea</h5>
             <form onSubmit={handleSubmit}>
                 <input
                     placeholder={type === "idea" ?
@@ -79,10 +75,6 @@ const IdeaInput = (props) => {
                     onChange={handleChange}></input>
                 <input type="submit" value="Share"></input>
             </form>
-            <h5
-                className={"cardType conundrum" + (type !== "conundrum" ? " inactive" : "")}
-                onClick={() => handleClick("conundrum")}>
-                conundrum</h5>
         </div>
     )
 }
